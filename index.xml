@@ -6,7 +6,16 @@
     <description>Recent content on S3curi7y&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 04 Jul 2022 21:55:00 +0800</lastBuildDate><atom:link href="https://s3curi7y.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 18 Jul 2022 21:55:00 +0800</lastBuildDate><atom:link href="https://s3curi7y.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Awvs、Nessus安装使用</title>
+      <link>https://s3curi7y.github.io/2022/07/18/awvs-nessus-install-01.html</link>
+      <pubDate>Mon, 18 Jul 2022 21:55:00 +0800</pubDate>
+      
+      <guid>https://s3curi7y.github.io/2022/07/18/awvs-nessus-install-01.html</guid>
+      <description>本文章主要介绍使用docker安装nessus与Awvs，临时测试一下，有需要的话还是购买正版吧。 环境准备 首先需安装好docker环境，可以自己先更换下源。 vim /etc/docker/daemon.json { &amp;#34;registry-mirrors&amp;#34;: [ &amp;#34;https://hub-mirror.c.163.com&amp;#34;, &amp;#34;https://ustc-edu-cn.mirror.aliyuncs.com&amp;#34;, &amp;#34;https://ghcr.io&amp;#34;, &amp;#34;https://mirror.baidubce.com&amp;#34; ] } service docker restart 安装 下载lieshianquan封装好的镜像 sudo docker run -itd -p 3443:3443 -p 8834:8834 leishianquan/awvs-nessus:v03 查看容器ID，进到容器内部 docker ps docker exec</description>
+    </item>
+    
     <item>
       <title>信息收集（一）|域名与IP</title>
       <link>https://s3curi7y.github.io/2022/07/04/xin-xi-shou-ji-01.html</link>

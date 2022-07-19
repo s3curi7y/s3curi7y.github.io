@@ -1,0 +1,85 @@
++++
+title="Awvs、Nessus安装使用（一）"
+tags=["漏洞扫描"]
+categories=["漏洞扫描"]
+date="2022-07-18T21:55:00+08:00"
+url="/2022/07/18/awvs-nessus-install-01.html"
+toc=true
++++
+
+本文章主要介绍使用docker安装nessus与Awvs，临时测试一下，有需要的话还是购买正版吧。
+
+## 环境准备
+
+首先需安装好docker环境，可以自己先更换下源。
+
+```
+vim /etc/docker/daemon.json
+```
+
+
+
+```
+{
+  "registry-mirrors": [
+    "https://hub-mirror.c.163.com",
+    "https://ustc-edu-cn.mirror.aliyuncs.com",
+    "https://ghcr.io",
+    "https://mirror.baidubce.com"
+  ]
+}
+```
+
+```
+service docker restart
+```
+
+## 安装
+
+下载lieshianquan封装好的镜像
+
+```
+sudo docker run -itd -p 3443:3443 -p 8834:8834 leishianquan/awvs-nessus:v03
+```
+
+查看容器ID，进到容器内部
+
+```
+docker ps
+docker exec -it 64xxxxx /bin/sh
+```
+
+进入容器后,替换awvs的lic
+
+```
+cp /home/license_info.json /home/acunetix/.acunetix/data/license/
+```
+
+为了防止awvs对lic文件进行替换，去除部分权限
+
+```
+chmod 444 /home/acunetix/.acunetix/data/license/license_info.json
+```
+
+启动Nessus
+
+```
+/etc/init.d/nessusd star
+```
+
+## 使用
+
+awvs监听在3443端口，nessus监听在8834
+
+Awvs账户密码：
+
+```
+account: leishi@leishi.com/Leishi123
+```
+
+Nessus:
+
+```
+leishi/leishianquan
+```
+

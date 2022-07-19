@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on S3curi7y&#39;s Blog</title>
-    <link>https://s3curi7y.github.io/post/</link>
-    <description>Recent content in Posts on S3curi7y&#39;s Blog</description>
+    <title>漏洞扫描 on S3curi7y&#39;s Blog</title>
+    <link>https://s3curi7y.github.io/tags/%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F/</link>
+    <description>Recent content in 漏洞扫描 on S3curi7y&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 18 Jul 2022 21:55:00 +0800</lastBuildDate><atom:link href="https://s3curi7y.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 18 Jul 2022 21:55:00 +0800</lastBuildDate><atom:link href="https://s3curi7y.github.io/tags/%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Awvs、Nessus安装使用</title>
       <link>https://s3curi7y.github.io/2022/07/18/awvs-nessus-install-01.html</link>
@@ -14,15 +14,6 @@
       
       <guid>https://s3curi7y.github.io/2022/07/18/awvs-nessus-install-01.html</guid>
       <description>本文章主要介绍使用docker安装nessus与Awvs，临时测试一下，有需要的话还是购买正版吧。 环境准备 首先需安装好docker环境，可以自己先更换下源。 vim /etc/docker/daemon.json { &amp;#34;registry-mirrors&amp;#34;: [ &amp;#34;https://hub-mirror.c.163.com&amp;#34;, &amp;#34;https://ustc-edu-cn.mirror.aliyuncs.com&amp;#34;, &amp;#34;https://ghcr.io&amp;#34;, &amp;#34;https://mirror.baidubce.com&amp;#34; ] } service docker restart 安装 下载lieshianquan封装好的镜像 sudo docker run -itd -p 3443:3443 -p 8834:8834 leishianquan/awvs-nessus:v03 查看容器ID，进到容器内部 docker ps docker exec</description>
-    </item>
-    
-    <item>
-      <title>信息收集（一）|域名与IP</title>
-      <link>https://s3curi7y.github.io/2022/07/04/xin-xi-shou-ji-01.html</link>
-      <pubDate>Mon, 04 Jul 2022 21:55:00 +0800</pubDate>
-      
-      <guid>https://s3curi7y.github.io/2022/07/04/xin-xi-shou-ji-01.html</guid>
-      <description>本系列文章主要介绍在红蓝演练预演场景下如何进行快速的信息收集，发掘有用的信息。 主域名信息收集途径 公司暴露在互联网上的资产无非有两个作用，第一是域名对外提供服务（http/s为主），第二直接用IP端口提供的服务，所以企业暴露在互联网上的域名与IP资产是我们要重点关注的，以下部分为主</description>
     </item>
     
   </channel>

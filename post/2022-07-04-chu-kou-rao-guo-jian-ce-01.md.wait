@@ -1,0 +1,84 @@
++++
+title="针对企业识别外部攻击者的方式分析（一）"
+tags=["安全运营"]
+categories=["安全运营"]
+date="2022-07-04T21:55:00+08:00"
+url="/2022/07/04/chu-kou-rao-guo-jian-ce-01.html"
+toc=true
+
++++
+
+本文章主要介绍一种，企业公有云出口环境下，内部识别攻击者的方式。
+
+## 场景假设
+
+假设目前存在一个企业，共有两个公网出口，一个是本地，一个是公有云出口。企业暴露在公网的Web应用域名会在公有云平台上购买waf进行保护。攻击者可以直接通过IP访问企业暴露在外的web应用，存在公有云waf绕过的可能。（公有云平台waf计费问题而非技术问题）安全运营团队如何进行发现攻击者呢?或者说我们如何在攻击者攻击成功前就对其进行反制呢？
+
+## 分析
+
+正好跟朋友讨论这个问题，做下记录。
+
+先说假设场景下，访问一个网站时数据包到底是怎么流传的，我们发布出去的网站域名，直接通过域名访问，流量会被转发给WAF应用，而WAF应用对流量解析后会插入**X-Forwarded-For**字段，**X-Forwarded-For**插入完成后，流量会经过本地出口，同时经过某设备会在**X-Forwarded-For**上追加一个IP，然后流量到内部的应用服务器。
+
+数据包在从用户访问到达服务端，正常的访问流量，日志中的**X-Forwarded-For**字段会是下面这个形式：
+
+**X-Forwarded-For**：client IP、WAF IP、某设备IP
+
+如果有一个攻击者想绕过云WAF直接通过IP访问内部应用，会产生什么情况呢？
+
+第一攻击者直接通过IP访问应用，日志中的**X-Forwarded-For**字段会是下面这个形式：
+
+**X-Forwarded-For**：client IP、某设备IP
+
+第二攻击者伪造X-Forwarded-For访问，日志中的**X-Forwarded-For**字段会是下面这个形式：
+
+**X-Forwarded-For**：一个或多个伪造IP、client IP、WAF IP、某设备IP
+
+**X-Forwarded-For**：伪造云WAF IP、client IP、某设备IP
+
+**X-Forwarded-For**：伪造的client IP、某设备IP
+
+
+
+## 企业控股信息查询
+
+## whois信息查询
+
+**在线网站：**
+
+* **站长之家 ：**： http://whois.chinaz.com/
+
+* **爱站网**   ： ：https://whois.aizhan.com/
+
+**工具：**
+
+* **whois** ：kali工具
+
+## 域名注册信息关联查询
+
+**在线工具**
+
+* **阿里云域名注册**：https://www.alibabacloud.com/zh/domain
+
+## APP/小程序信息查询/页面信息
+
+**在线网站：**
+
+* **搜狗微信公众号**：https://weixin.sogou.com/
+
+**自动化工具**
+
+* **AppInfoScanner**提取移动端，静态网站中的信息，工具暂时还没脱壳功能，可以自己跟脱壳工具对接联动下：https://github.com/kelvinBen/AppInfoScanner
+
+## 公司邮箱后缀信息查询
+
+## Web指纹信息查询
+
+主要依靠人工进行分析数据包
+
+## IP反查获取主域名信息
+
+**自动化工具：**
+
+* **ip2domain** ： 批量查询ip对应域名、备案信息、百度权重 ： https://github.com/Sma11New/ip2domain
+
